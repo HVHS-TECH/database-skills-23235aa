@@ -7,15 +7,16 @@
 // Input:  n/a
 // Return: n/a
 /**************************************************************/
-  const firebaseConfig = {
-    apiKey: ,
-    authDomain: ,
-    databaseURL: ,
-    projectId: ,
-    storageBucket: ,
-    messagingSenderId:,
-    appId:
-  };
+  // Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBVTSf9liUHddvuTnV0z2Ny7ozA25LDxSg",
+  authDomain: "ayaan-arora-12comp.firebaseapp.com",
+  databaseURL: "https://ayaan-arora-12comp-default-rtdb.firebaseio.com",
+  projectId: "ayaan-arora-12comp",
+  storageBucket: "ayaan-arora-12comp.firebasestorage.app",
+  messagingSenderId: "894897062738",
+  appId: "1:894897062738:web:d37b55fd4bc618915ab08b"
+};
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
