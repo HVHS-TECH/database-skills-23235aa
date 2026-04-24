@@ -21,7 +21,24 @@ function helloWorld(){
   console.log("Running helloWorld()")
   firebase.database().ref('/').set(
     {
-      message: 'Hello World!'
+      message: 'Kia ora'
     }
   )
+}
+function goodbye(){
+  console.log("Running goodbye()")
+  firebase.database().ref('/').set(
+    {
+      message:'Ka kite ano'
+    }
+  )
+}
+function simpleRead(){
+  console.log("Reading message");
+  firebase.database().ref('/').child('message').once('value', displayRead);
+  console.log("Leaving simpleRead")
+}
+
+function displayRead(){
+  console.log("Running displayRead() , the message is")
 }
