@@ -83,12 +83,19 @@ else{
   HTML_OUTPUT.innerHTML = snapshot.val()
 }
 }
-function listFunction(){
-  console.log("List")
-  firebase.database().ref('/').child('message').once('value', fb_highscore , fb_readError)
-}
-function fb_highscore(snapshot){
-  higscoreTable = {
+//firebase.database().ref('/').set(
+  //{
+    //game1:{
+      //users:{
+        //Dhruv:9999,
+        //Jack:100000,
+        //Toby:9,
+        //Yug:987654321,
+      //}
+    //}
+  //}
+//)
+  highscoreTable = {
     game1:{
       users:{
         Dhruv: 99999,
@@ -109,5 +116,16 @@ function fb_highscore(snapshot){
     }
   }
   firebase.database().ref('/').set(highscoreTable)
-  firebase.database().ref('/').set(123456789)
+firebase.database().ref('/game1/users/Jenna/').set(676767676)
+let user = "Toby";
+let score = "89";
+firebase.database().ref('/game1/users/'+user).set(
+  score
+);
+function readScores(){
+  console.log("Reading scores")
+  firebase.database().ref('/highscoreTable').once('value',displayScores)
+}
+function displayScores(snapshot){
+  console.log(snapshot.val())
 }
