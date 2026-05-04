@@ -73,13 +73,14 @@ function fb_readListener(){
   console.log("Read Listener");
   firebase.database().ref('/message').on('value' , fb_logDatabaseRead , fb_readError);
 };
+var dbData;
 function fb_logDatabaseRead(snapshot){
-var dbData = snapshot.val();
+dbData = snapshot.val();
 if (dbData == null){
   console.log('There was no record when trying to read the message')
 }
 else{
-  console.log("the message is: " + dbData)
+  console.log(dbData)
   HTML_OUTPUT.innerHTML = snapshot.val()
 }
 }
@@ -122,10 +123,7 @@ let score = "89";
 firebase.database().ref('/game1/users/'+user).set(
   score
 );
-function readScores(){
-  console.log("Reading scores")
-  firebase.database().ref('/highscoreTable').once('value',displayScores)
-}
-function displayScores(snapshot){
-  console.log(snapshot.val())
+function fb_readHighScores(){
+  console.log("Reading high scores");
+  firebase.database().ref('/game1').once('value' , fb_logDatabaseRead , fb_readError)
 }
