@@ -71,7 +71,7 @@ function fb_readError(error){
 };
 function fb_readListener(){
   console.log("Read Listener");
-  firebase.database().ref('/message').on('value' , fb_logDatabaseRead , fb_readError);
+  firebase.database().ref('/game1/users').on('value' , fb_logDatabaseRead , fb_readError);
 };
 var dbData;
 function fb_logDatabaseRead(snapshot){
@@ -80,8 +80,10 @@ if (dbData == null){
   console.log('There was no record when trying to read the message')
 }
 else{
-  console.log(dbData)
-  HTML_OUTPUT.innerHTML = snapshot.val()
+  console.log(dbData);
+  let names = Object.keys(dbData);
+  console.log(names);
+  HTML_OUTPUT.innerHTML + snapshot.val()
 }
 }
 //firebase.database().ref('/').set(
