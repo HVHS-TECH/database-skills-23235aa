@@ -6,3 +6,11 @@
  **                                                          **
  **************************************************************
  **************************************************************/
+/*function fb_popupLogin(){
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider).then((results)) => {
+        GLOBAL_user = result.user;
+        console.log("User has logged in")
+    });
+)*/

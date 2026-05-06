@@ -71,7 +71,7 @@ function fb_readError(error){
 };
 function fb_readListener(){
   console.log("Read Listener");
-  firebase.database().ref('/game1/users').on('value' , fb_logDatabaseRead , fb_readError);
+  firebase.database().ref('/message').on('value' , fb_logDatabaseRead , fb_readError);
 };
 var dbData;
 function fb_logDatabaseRead(snapshot){
@@ -83,21 +83,13 @@ else{
   console.log(dbData);
   let names = Object.keys(dbData);
   console.log(names);
+  for(i=0; i<names.lenght;i++){
+    let key= names[i];
+    console.log("Score "+i+" is for " + key)
+  }
   HTML_OUTPUT.innerHTML + snapshot.val()
 }
 }
-//firebase.database().ref('/').set(
-  //{
-    //game1:{
-      //users:{
-        //Dhruv:9999,
-        //Jack:100000,
-        //Toby:9,
-        //Yug:987654321,
-      //}
-    //}
-  //}
-//)
   highscoreTable = {
     game1:{
       users:{
@@ -127,5 +119,12 @@ firebase.database().ref('/game1/users/'+user).set(
 );
 function fb_readHighScores(){
   console.log("Reading high scores");
-  firebase.database().ref('/game1').once('value' , fb_logDatabaseRead , fb_readError)
+  firebase.database().ref('/game1').once('value' , fb_displayHighScores , fb_readError)
+}
+function fb_displayHighScores(snapshot){
+let highScores = snapshot.val()
+console.log(highScores)
+console.log(highScores["users"])
+console.log("Dhruv got " +highScores["users"]["Dhruv"]+ "points")
+
 }
