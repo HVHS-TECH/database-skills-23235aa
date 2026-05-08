@@ -91,7 +91,7 @@ else{
 }
 }
   highscoreTable = {
-    game1:{
+   game1:{
       users:{
         Dhruv: 99999,
         Jack: 10000,
@@ -123,8 +123,17 @@ function fb_readHighScores(){
 }
 function fb_displayHighScores(snapshot){
 let highScores = snapshot.val()
+snapshot.forEach(fb_showOneScore)
 console.log(highScores)
 console.log(highScores["users"])
 console.log("Dhruv got " +highScores["users"]["Dhruv"]+ "points")
-
+let names= Object.entries(highScores["users"]);
+console.log(names)
+for(i= 0; i< names.length;i++){
+  let key= names[i];
+  console.log("Score "+i+" is for " + key)
+}
+}
+function fb_showOneScore(child){
+  console.log(child.val());
 }
