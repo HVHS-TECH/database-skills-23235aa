@@ -87,7 +87,7 @@ function fb_logDatabaseRead(snapshot) {
       let key = names[i];
       console.log("Score " + i + " is for " + key)
     }
-    HTML_OUTPUT.innerHTML + snapshot.val()
+    HTML_OUTPUT.innerHTML += snapshot.val()
   }
 }
 highscoreTable = {
@@ -95,7 +95,7 @@ highscoreTable = {
     users: {
       Dhruv: 99999,
       Jack: 10000,
-      Micheal: "3.141",
+      Micheal: 3.141,
       Sasha: 0.5,
       Yug: 987654321
     }
@@ -113,7 +113,7 @@ highscoreTable = {
 firebase.database().ref('/').set(highscoreTable)
 firebase.database().ref('/game1/users/Jenna/').set(676767676)
 let user = "Toby";
-let score = "89";
+let score = 89;
 firebase.database().ref('/game1/users/' + user).set(
   score
 );
@@ -132,15 +132,17 @@ function fb_displayHighScores(snapshot) {
     let key = names[i];
     let value = highScores["users"][key]
     console.log("Score " + key + ": " + value)
+    HTML_OUTPUT.innerHTML += "Score " + key + ": "+  value + "<br>"
   }
 }
 function fb_readHighScores2(){
   console.log("Reading High Scores");
-  firebase.database().ref('/game1/users').once('value', fb_displayHighScores2,fb_readError)
+  firebase.database().ref('/game1/users').orderByValue().limitToLast(3).once('value', fb_displayHighScores2,fb_readError)
 }
 function fb_displayHighScores2(snapshot){
   snapshot.forEach(fb_showOneScore)
 }
 function fb_showOneScore(child){
   console.log(child.key+ " got "+ child.val() + " points")
+  HTML_OUTPUT.innerHTML += child.key+ " got "+ child.val() + " points<br>"
 }
