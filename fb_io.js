@@ -28,8 +28,8 @@ function fb_handleLogin(_user){
         console.log("User has logged in")
     });
 }
-function fb_logout(){
-    authenticationListener();
-    firebase.auth().signOut();
-    console.log("User has logged out")
-}
+//function fb_logout(){
+    //authenticationListener();
+    //firebase.auth().signOut();
+    //console.log("User has logged out")
+//}
